@@ -1,0 +1,18 @@
+version: '3.8' 
+
+  sevices: 
+    redis: 
+      image: redis:6
+      ports:
+        - "6379" 
+
+    web1: 
+      image: python:3.9-slim
+      ports: 
+        - "5000" 
+
+    postgres: 
+      environment:
+        -     
+
+    
