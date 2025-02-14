@@ -1,18 +1,39 @@
-version: '3.8' 
 
-  sevices: 
+
+services: 
     redis: 
       image: redis:6
       ports:
-        - "6379" 
-
+        - "6379:6397" 
+      
+    
+    db: 
+      image: postgres:latest
+      
+      environment:
+        - POSTGRES_USER=user 
+        - POSTGRES_PASSWORD=password 
+        - POSTGRES_Db=mydatabase 
+      ports: 
+        - "5432:5432"  
+    
     web1: 
       image: python:3.9-slim
       ports: 
-        - "5000" 
+        - "5000:5000"  
+      volumes: 
+        - .:/app 
+      depends_on:
+        - db 
+        - redis  
+      
+    
+   
+   
+      
 
-    postgres: 
-      environment:
-        -     
+    
+
+
 
     
